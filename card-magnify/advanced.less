@@ -1,0 +1,123 @@
+
+
+/**
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+ // background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+*/
+
+.animation-control {
+  padding: 5px;
+}
+
+.animation {
+  animation-play-state: paused;
+}
+
+.contact-card {
+  .avatar {
+    // Head of the profile character
+    &::before {
+      .absoluteCentered();
+      content: "";
+      background-color: @contact-card-dark;
+      width: 22.5px;
+      height: 22.5px;
+      top: -15px;
+      border-radius: 50%;
+    }
+    &::after {
+      content: "";
+      .absoluteCentered();
+      top: 40px;
+      height: 25px;
+      width: 40px;
+      background-color: @contact-card-dark;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+  } 
+
+  .text {
+    // second line
+    &::before {
+      content: "";
+      .absoluteCentered();
+      width: 125px;
+      height: 7.5px;
+      background-color: @contact-card-dark;
+      top: 17.5px;
+    }
+
+    // third line
+    &::after {
+      content: "";
+      .absoluteCentered();
+      width: 110px;
+      height: 7.5px;
+      background-color: @contact-card-dark;
+      top: 32.5px;
+    }
+  }
+}
+
+#magnifying-glass {
+  #handle {
+    &::after {
+      content: "";
+      position: absolute;
+      border-top-right-radius: 30px;
+      height: 30px;
+      width: 20px;
+      top: -20px;
+      left: 5px;
+      background-color: @magnifying-glass-dark;
+    }
+    #handle-inner {
+      .absoluteCentered();
+      background-color: @magnifying-glass-light;
+      width: 27.5px;
+      height: 92px;
+      top: -7.5px;
+      left: -7.5px;
+      border-bottom-right-radius: 17.5px;
+      border-top-left-radius: 17.5px;
+
+      // First strip
+      &::before {
+        content: "";
+        background-color: @magnifying-glass;
+        height: 8px;
+        width: 27.5px;
+        position: absolute;
+        top: 34px;
+        left: 0px;
+      }
+      
+      // Second strip
+      &::after {
+        content: "";
+        background-color: @magnifying-glass;
+        height: 8px;
+        width: 27.5px;
+        position: absolute;
+        top: 20x;
+        left: 0px;
+      }
+    }
+  }
+}
+
+
