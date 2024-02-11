@@ -24,14 +24,24 @@ vmax	Relative to 1% of viewport's* larger dimension
 %	Relative to the parent element
 **/
 
+/**
+positonnement au mieu horizontal et vertical
+
+position: absolute + top and left 50 %
+and transform: translate(-50%, -50%)
+
+or
+
+position: absolute + top, left, right, bottom 0 and margin auto
+*/
 
 // colors
 $angleSpan: 40deg;
 $dur: 2s;
-$delayInc: $dur / 100;
+$delayInc: calc($dur / 100);
 $segments: 30;
 $timing: cubic-bezier(0.6,0,0.4,1);
-$playState: running;
+$playState: running; //running;
 // colors
 $w1: hsl(0,0%,100%);
 $w1T: hsla(0,0%,100%,0);
@@ -69,11 +79,14 @@ body {
 
     &__segment {
 		position: absolute;
-		top: 50%;
-		left: 50%;
+		top: 0;
+		left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
 		width: 3em;
 		height: 2em;
-		transform: translate(-50%,-50%);
+		//transform: translate(-50%,-50%);
         &:before {
 			animation: loop $dur $timing infinite $playState;
 			background: linear-gradient(90deg,$w1 20%,$w2 20% 80%,$w1 80%);
@@ -138,7 +151,7 @@ body {
         @for $segment from 1 through 30 {
             $rotateBy: $angleInc * ($segment - 1);
             &:nth-of-type(#{$segment}) {
-                transform: translate(-50%, -50%) rotate($negAngleHalf + $rotateBy);
+                transform: rotate($negAngleHalf + $rotateBy);
             }
 
             &:nth-of-type(#{$segment}):before {

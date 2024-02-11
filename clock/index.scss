@@ -1,0 +1,111 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    border: solid red 2px;
+    margin: 0px;
+    background-color: #424242;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.clock {
+    width: 350px;
+    height: 350px;
+    border: solid yellow 2px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    box-shadow: 
+        inset 4px 4px 20px black,
+    ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+}
+
+.clock:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: red; //#747474;
+    z-index: 999;
+    //display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.clock .hour,
+.clock .min,
+.clock .sec {
+    position: absolute;
+}
+
+.clock .hour, .hr {
+    width: 160px;
+    height: 160px;
+    border: solid white 2px;
+}
+
+
+.clock .min, .mn {
+    width: 190px;
+    height: 190px;
+    border: solid orange 2px;
+}
+
+
+.clock .sec, .sc {
+    width: 230px;
+    height: 230px;
+    border: solid orangered 2px;
+}
+
+.hr, .mn, .sc {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   // transition: transform 0.5s;
+}
+
+.hr:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background-color: yellowgreen;
+    border-radius: 6px 6px 0 0;
+    z-index: 9;
+}
+
+
+.mn:before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background-color: magenta;
+    border-radius: 6px 6px 0 0;
+    z-index: 10;
+}
+
+
+.sc:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background-color: aqua;
+    border-radius: 6px 6px 0 0;
+    z-index: 11;
+}
