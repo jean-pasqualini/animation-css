@@ -1,35 +1,6 @@
-
-
-/**
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
- // background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-*/
-
-.animation-control {
-  padding: 5px;
-}
-
-.animation {
-  animation-play-state: paused;
-}
-
 .contact-card {
   .avatar {
-    // Head of the profile character
-    &::before {
+    .avatar-head {
       .absoluteCentered();
       content: "";
       background-color: @contact-card-dark;
@@ -38,7 +9,7 @@
       top: -15px;
       border-radius: 50%;
     }
-    &::after {
+    .avatar-body {
       content: "";
       .absoluteCentered();
       top: 40px;
@@ -92,30 +63,9 @@
       height: 92px;
       top: -7.5px;
       left: -7.5px;
-      border-bottom-right-radius: 17.5px;
-      border-top-left-radius: 17.5px;
-
-      // First strip
-      &::before {
-        content: "";
-        background-color: @magnifying-glass;
-        height: 8px;
-        width: 27.5px;
-        position: absolute;
-        top: 34px;
-        left: 0px;
-      }
-      
-      // Second strip
-      &::after {
-        content: "";
-        background-color: @magnifying-glass;
-        height: 8px;
-        width: 27.5px;
-        position: absolute;
-        top: 20x;
-        left: 0px;
-      }
+      border-bottom-right-radius: 7.5px;
+      border-top-left-radius: 7.5px;
+      z-index: 4;
     }
   }
 }

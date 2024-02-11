@@ -14,6 +14,11 @@
                margin: 0px;
                box-sizing: border-box;
                height: 40px;
+               display: flex;
+               flex-wrap: wrap;
+           }
+           #navigation li {
+            margin-right: 5px;
            }
            #navigation li a {
                 text-decoration: none;
@@ -31,6 +36,8 @@
     <body>
         <ul id="navigation">
             <li><a href="/card-magnify" target="preview">Card magnify</a></li>
+            <li><a href="/longcat" target="preview">Longcat</a></li>
+            <li><a href="/debug" target="preview">Debug</a></li>
         </ul>
         <iframe width="500" height="500" name="preview">  </iframe>
         

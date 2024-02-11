@@ -1,34 +1,47 @@
+@contact-card-width: 250px;
 
+.hidden() {
+  width: 0px;
+}
+
+
+// From left to right
+// From top to 27.5px to top
+// from 37.5deg to 5deg to 37.5deg
 @keyframes magnifying-glass-animate {
-    0% { transform: rotate(37.5deg); left: 150px; top: 0; }
-    10% { transform: rotate(37.5deg); left: 150px; top: 0; }
-    50% { transform: rotate(5deg); left: -150px; top: 0; }
-    75% { transform: rotate(5deg); left: -150px; top: 0; }
-    82.5% { top: 27.5px; }
-    90% { transform: rotate(37.5deg); left: 150px; top: 0; }
-    100% { transform: rotate(37.5deg); left: 150px; top: 0; }
-  }
+  0%, 10% { transform: rotate(37.5deg); left: 150px; top: 0; }
+  50%, 75% { transform: rotate(5deg); left: -150px; top: 0; }
+  82.5% { top: 27.5px; }
+  90%, 100% { transform: rotate(37.5deg); left: 150px; top: 0; }
+}
 
-  #magnifying-glass {
-    animation: magnifying-glass-animate 1.5s ease-in-out infinite;
-    animation-delay: 0.375s;
-  }
+#magnifying-glass.animation-running {
+  animation-name: magnifying-glass-animate;
+}
 
-  @keyframes contact-card-animate {
-    0% {opacity: 0; top: -300px; width: 0px; }
-    1% { opacity: 1; top: -300px; width: 0px; }
-    10% { top: -300px; width: 250px; }
-    20% { top: 0px; width: 250px; }
-    25% { top: 0px; width: 250px; }
-    35% { top: 0px; width: 250px; }
-    50% { top: 300px; width: 250px; }
-    65% {opacity: 1; top: 300px; width: 0px;  }
-    100% {opacity: 0; top: 300px; width: 0px; }
-  }
+#magnifying-glass {
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: 0.375s;
+}
 
-  .contact-card {
-    animation: contact-card-animate 3s ease-in-out infinite;
-    &:nth-child(2) {
-      animation-delay: 2.5s;
-    }
-  }
+// From up to down 
+// From hidden to visible
+@keyframes contact-card-animate {
+  0% { top: -300px; width: 0px; }
+  10% { top: -300px; width: @contact-card-width; }
+  20%, 25%, 35% { top: 0px; }
+  50% { top: 300px; width: @contact-card-width; }
+  65%, 100% { top: 300px; width: 0px; }
+}
+
+.contact-card.animation-running {
+  animation-name: contact-card-animate;
+}
+
+.contact-card {
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}

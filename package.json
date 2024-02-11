@@ -13,6 +13,10 @@
     "gulp": "^4.0.2"
   },
   "dependencies": {
-    "browser-sync": "^3.0.2"
+    "browser-sync": "^3.0.2",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-scss": "^1.4.0",
+    "sass": "^1.70.0"
   }
 }

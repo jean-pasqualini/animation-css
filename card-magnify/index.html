@@ -2,20 +2,30 @@
 <html>
     <head>
         <link rel="stylesheet" media="screen" href="index.css" />
+        <script src="index.js"></script>
     </head>
     <body>
         <h1>Analyse in progress...</h1>
-        <button class="animation-control">Play/Pause animations</button>
+        <div id="animation-panel">
+          <div id="animation-log">
+
+          </div>
+          <button id="animation-control">Play/Stop animations</button>
+        </div>
+
         <div class="container">
-            <div class="contact-card animation">
-              <div class="avatar"></div>
-              <div class="text"></div>
+            <div class="contact-card" id="contact-card">
+              <div class="avatar">
+                <div class="avatar-head"></div>
+                <div class="avatar-body"></div>
+              </div>
+              <div class="text-panel">
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+              </div>
             </div>
-            <div class="contact-card animation">
-              <div class="avatar"></div>
-              <div class="text"></div>
-            </div>
-            <div id="magnifying-glass" class="animation">
+            <div id="magnifying-glass">
               <div id="glass"></div>
               <div id="handle">
                 <div id="handle-inner"></div>
