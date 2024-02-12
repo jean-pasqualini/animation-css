@@ -3,6 +3,7 @@ const browserSync = require('browser-sync').create()
 const less = require('gulp-less')
 const pug = require('gulp-pug')
 const sass = require('gulp-sass')(require('sass'))
+const nunjucksRender = require('gulp-nunjucks-render');
 
 gulp.task('less', () => {
     return gulp.src('**/index.less')
@@ -21,6 +22,14 @@ gulp.task('pug', () => {
         }));
 })
 
+gulp.task('jinja', () => {
+    return gulp.src('**/*.j2')
+        .pipe(nunjucksRender())
+        .pipe(gulp.dest((file) => {
+            return file.base
+        }))
+})
+
 gulp.task('sass', () => {
     return gulp.src('**/*.scss')
         .pipe(sass())
@@ -30,7 +39,7 @@ gulp.task('sass', () => {
         .pipe(browserSync.stream())
 })
 
-gulp.task('serve', gulp.series(['pug', 'less', 'sass'], () => {
+gulp.task('serve', gulp.series(['pug', 'jinja', 'less', 'sass'], () => {
     browserSync.init({
         open: false,
         server: {
@@ -41,6 +50,7 @@ gulp.task('serve', gulp.series(['pug', 'less', 'sass'], () => {
     gulp.watch('**/*.less', gulp.series(['less']))
     gulp.watch('**/*.scss', gulp.series(['sass']))
     gulp.watch('**/*.pug', gulp.series(['pug']))
+    gulp.watch('**/*.j2', gulp.series(['jinja']))
     gulp.watch('**/*.html').on('change', browserSync.reload)
 }))
 

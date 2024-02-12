@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        {#
+            https://www.w3schools.com/css/css3_flexbox_container.asp
+            https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+        #}
+        {% macro css(props) %}
+            {% for key, value in props %}{{ key }}:{{ value}};{% endfor %}
+        {% endmacro %}
+        {% macro demo(name, cprops = {}, fbprops = {}, sbprops = {}) %}
+            <div class="flex" id="{{ name }}" data-name="{{ name }}" style="{{ css(cprops) }}">
+                <div class="flex-item" style="{{ css(fbprops) }}">
+                    <div class="mini">H</div>
+                </div>
+                <div class="flex-item" style="{{ css(sbprops) }}"></div>
+            </div>
+        {% endmacro %}
+        {% set config = {
+            "justify content start": {
+               "cprops": {"justify-content": "flex-start"}
+            },
+            "justify content center": {
+               "cprops": {"justify-content": "center"}
+            },
+            "justify content end": {
+               "cprops": {"justify-content": "flex-end"}
+            },
+            "justify content space between": {
+               "cprops": {"justify-content": "space-between"}
+            },
+            "justify content space around": {
+               "cprops": {"justify-content": "space-around"}
+            },
+            "justify content space evenly": {
+               "cprops": {"justify-content": "space-evenly"}
+            },
+            "align content center + flex wrap + gap (justify-content is still usable)": {
+               "cprops": {"align-content": "center", "flex-wrap": "wrap", "gap": "6px"}
+            },
+            "justify-items": { 
+               "cprops": {"align-items": "center"}
+            },
+            "justify-baseline": {
+               "cprops": {"align-items": "baseline"}
+            },
+            "flex direction: column": {
+               "cprops": {"flex-direction": "column"}
+            },
+            "flex direction: row-reverse": {
+               "cprops": {"flex-direction": "row-reverse"}
+            },
+            "flex direction: align-self": {
+               "cprops": {"align-self": "center"}
+            },
+            "order": {
+               "fbprops": {"order": 2}, 
+               "sbprops": {"order": 1}
+            },
+            "flex default (grow 0, shrink 1, basis auto)": {
+               "references": [
+                  "https://la-cascade.io/articles/comprendre-flex-grow-flex-shrink-et-flex-basis",
+                  "https://codepen.io/raphaelgoetter/pen/bdYQML"
+               ],
+               "fbprops": {"width": "auto", "flex-shrink": 1, "flex-grow": 0, "flex-basis": "auto"},
+               "sbprops": {"width": "auto", "flex-shrink": 1, "flex-grow": 0, "flex-basis": "auto"}
+            },
+            "flex size specified (grow 1, shrink 0, basis 100px)": {
+               "fbprops": {"flex-shrink": 0, "flex-grow": 1, "flex-basis": "100px"},
+               "sbprops": {"flex-shrink": 0, "flex-grow": 1, "flex-basis": "100px"}
+            },
+            "flex size specified (grow 0, shrink 1, basis 100px)": {
+               "fbprops": {"flex-shrink": 1, "flex-grow": 0, "flex-basis": "100px"},
+               "sbprops": {"flex-shrink": 1, "flex-grow": 0, "flex-basis": "100px"}
+            },
+            "flex size specified (grow 0, shrink 0, basis 100px)": {
+               "fbprops": {"flex-shrink": 0, "flex-grow": 0, "flex-basis": "200px"},
+               "sbprops": {"flex-shrink": 0, "flex-grow": 0, "flex-basis": "200px"}
+            },
+            "flex wrap": {
+               "cprops": {"flex-wrap": "wrap"},
+               "fbprops": {"flex-basis": "400px"},
+               "sbprops": {"flex-basis": "400px"}
+            }
+        } %}
+        <div class="view">
+         <div class="sidebar">
+            <ul>
+            {% for name, conf in config %}
+               <li><a href="#{{ name }}">{{ name }}</a></li>
+            {% endfor %}
+            </ul>
+         </div>
+         <div class="preview">
+            {% for name, conf in config %}
+                  {{ demo(
+                     name, 
+                     cprops=conf.cprops|default({}),
+                     fbprops=conf.fbprops|default({}),
+                     sbprops=conf.sbprops|default({})
+                  ) }}
+            {% endfor %}
+         </div>
+        </div>
+    </body>
+</html>
